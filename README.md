@@ -5,4 +5,6 @@ This repository contains the assignments completed as part of a brilliant introd
 
 ## Contents
 
-__Assignment1__: A theoretical assignment which serves as a refresher for Calculus. 
+__Assignment1__: A theoretical assignment which serves as a refresher for Calculus.   
+__Assignment2__: A theoretical assignment which serves as a refresher for Linear Algebra.    
+__Assignment3__: 

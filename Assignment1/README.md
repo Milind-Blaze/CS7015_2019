@@ -3,7 +3,8 @@
 ## Contents    
 
 __*.png__: Image files necessary to compile the main.tex pdf     
-__main.tex__: Source code with spaces to fill out answers in 
+__main.tex__: Source code with spaces to fill out answers in    
+__Assignment1_question7.py__: A jupyter notebook to produce plots for question 7 of Assignment 1    
 
 
 ## Assignment 1 (links)
