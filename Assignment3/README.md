@@ -49,7 +49,7 @@ __Note__: Currently, no limit is imposed on the number of times annealing is per
 
 #### Outputs
 
-__weights_*epoch_num*.pickle__: parameters/ weights after the ```epoch_num```th epoch. A total of ```num_epochs``` such pickle files are stored at ```save_dir```.    
+__weights\_*epoch_num*.pickle__: parameters/ weights after the ```epoch_num```th epoch. A total of ```num_epochs``` such pickle files are stored at ```save_dir```.    
 __log_train.txt__: file containing details of the training loss, error on training data and learning rate for the epoch for each epoch. Created at ```expt_dir```.        
 __log_val.txt__: file containing details of the validation loss, error on validation data and learning rate for the epoch for each epoch. Created at ```expt_dir```.        
 __readme.txt__: file containing the values of the hyperparameters.     
