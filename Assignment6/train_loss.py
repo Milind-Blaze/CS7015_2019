@@ -13,7 +13,7 @@ import pickle
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 import sys
-import tensorflow as tf
+
 
 
 plt.rcParams.update({'font.size': 22})
@@ -43,6 +43,33 @@ np.random.seed(0)
 def sigmoid(z):
 	return 1/(1 + np.exp(-z))
 
+def sample_vector(n, weight, vector, bias):
+	if vector.ndim == 1:
+		vector = vector[:, np.newaxis]
+	if bias.ndim == 1:
+		bias = bias[:, np.newaxis]
+
+
+	z_linear = np.dot(weight, vector) + bias
+	probs = sigmoid(z_linear)
+	if probs.ndim == 1:
+		probs = probs[:, np.newaxis]
+
+	# print(np.shape(z_linear), np.shape(probs), "shape of z_linear")
+	assert np.shape(probs) == (n,1) 
+
+	random = np.random.random((n,1))
+
+	one = random < probs
+
+	zerovec = np.zeros((n,1))
+
+	zerovec[one] = 1
+
+	assert zerovec.ndim == 2
+
+	return zerovec
+
 ########################################################### set values #######################################################
 
 threshold = 127
@@ -52,6 +79,8 @@ eta = args.eta
 num_epochs = args.num_epochs
 m = 6400
 l = 64
+path_train = args.path_train
+path_test = args.path_test
 
 path_folder = "./train_loss_k" + str(k) + " n" + str(n) + " eta" + str(eta) + " epochs" + str(num_epochs)
 try:
@@ -65,12 +94,12 @@ except FileExistsError:
 
 ############# selecting the dataset ################
 
-data_train_df = pd.read_csv("train.csv")
+data_train_df = pd.read_csv(path_train)
 data_train = data_train_df.to_numpy()
 X_train = data_train[:,1:-1]
 labels_train = data_train[:,-1]
 
-data_test_df = pd.read_csv("test.csv")
+data_test_df = pd.read_csv(path_test)
 data_test = data_test_df.to_numpy()
 X_test = data_test[:,1:-1]
 labels_test = data_test[:,-1]
@@ -152,32 +181,7 @@ c = np.zeros((n,1))
 
 ########################################## Training the RBM ####################################################################
 
-def sample_vector(n, weight, vector, bias):
-	if vector.ndim == 1:
-		vector = vector[:, np.newaxis]
-	if bias.ndim == 1:
-		bias = bias[:, np.newaxis]
 
-
-	z_linear = np.dot(weight, vector) + bias
-	probs = sigmoid(z_linear)
-	if probs.ndim == 1:
-		probs = probs[:, np.newaxis]
-
-	# print(np.shape(z_linear), np.shape(probs), "shape of z_linear")
-	assert np.shape(probs) == (n,1) 
-
-	random = np.random.random((n,1))
-
-	one = random < probs
-
-	zerovec = np.zeros((n,1))
-
-	zerovec[one] = 1
-
-	assert zerovec.ndim == 2
-
-	return zerovec
 
 
 # print(sample_vector(n,W,b,c))
@@ -308,10 +312,16 @@ for epoch in range(num_epochs):
 	plt.close()
 
 plt.figure()
-plt.plot(loss_epochs_train)
-plt.plot(loss_epochs_validation)
+plt.plot(loss_epochs_train, label = "training loss")
+plt.plot(loss_epochs_validation, label = "test loss")
+plt.grid()
+plt.xlabel("Number of epochs")
+plt.ylabel("loss")
+plt.title("learning curve")
+plt.legend()
+plt.savefig(join(path_folder,"learning_curves.pdf"), format = "pdf")
 plt.show()
-
+plt.close()
 
 ############ plotting a few images ###############
 
@@ -334,108 +344,3 @@ plt.imshow(vtemp, cmap = "gray")
 plt.savefig(join(path_folder, "origarecon.png"))
 plt.close()
 
-# image = X_train_thresh[10,:]
-# h = sample_vector(n, W, image, c)
-# vtemp = sample_vector(num_visible, W.T, h, b)
-# print(np.shape(vtemp))
-
-# image = np.reshape(image, (28,28))
-# vtemp = np.reshape(vtemp, (28,28))
-
-# plt.figure()
-# plt.imshow(image, cmap = "gray")
-# plt.show()
-# plt.close()
-
-# plt.figure()
-# plt.imshow(vtemp, cmap = "gray")
-# plt.show()
-# plt.close()
-
-
-# image = X_test_thresh[100,:]
-# h = sample_vector(n, W, image, c)
-# vtemp = sample_vector(num_visible, W.T, h, b)
-# print(np.shape(vtemp))
-
-# image = np.reshape(image, (28,28))
-# vtemp = np.reshape(vtemp, (28,28))
-
-# plt.figure()
-# plt.imshow(image, cmap = "gray")
-# plt.show()
-# plt.close()
-
-# plt.figure()
-# plt.imshow(vtemp, cmap = "gray")
-# plt.show()
-# plt.close()
-
-
-
-################## Computing the hidden representations for the test images #######################
-
-# print("Computing the hidden representations for the training examples")
-# print("Shape of test data: ", np.shape(X_train_thresh))
-
-# num_train_examples = np.shape(X_train_thresh)[0]
-# hidden_reps = []
-# for i in range(num_train_examples):
-# 	image = X_train_thresh[i,:]
-# 	h = sample_vector(n, W, image, c)
-# 	hidden_reps.append(np.array(h[:,0]))
-
-# print(np.shape(hidden_reps))
-
-# hidden_reps = np.array(hidden_reps)
-
-# embedded = TSNE(n_components = 2).fit_transform(hidden_reps)
-# print(np.shape(embedded))
-# vis_x = embedded[:,0]
-# vis_y = embedded[:,1]
-
-# print(np.shape(labels_train))
-
-# plt.figure(figsize = (20,16))
-# plt.title("Embeddings for training examples")
-# plt.xlabel("x")
-# plt.ylabel("Y")
-# plt.scatter(vis_x[:10000], vis_y[:10000], c = labels_train[:10000], cmap = plt.cm.get_cmap("jet", 10))
-# plt.colorbar(ticks = range(max(labels_train)))
-# plt.savefig(join(path_folder, "clusters_train.png"))
-# plt.close()
-
-
-
-# print("Computing the hidden representations for the training examples")
-# print("Shape of test data: ", np.shape(X_test_thresh))
-
-# num_test_examples = np.shape(X_test_thresh)[0]
-# hidden_reps = []
-# for i in range(num_test_examples):
-# 	image = X_test_thresh[i,:]
-# 	h = sample_vector(n, W, image, c)
-# 	hidden_reps.append(np.array(h[:,0]))
-
-# print(np.shape(hidden_reps))
-
-# hidden_reps = np.array(hidden_reps)
-
-# embedded = TSNE(n_components = 2, early_exaggeration = 7).fit_transform(hidden_reps)
-# print(np.shape(embedded))
-
-# path_pickle = join(path_folder, "embedded.pickle")
-
-# vis_x = embedded[:,0]
-# vis_y = embedded[:,1]
-
-# print(np.shape(labels_test))
-
-# plt.figure(figsize = (20,16))
-# plt.title("Embeddings for testing examples, k = " + str(k))
-# plt.xlabel("x")
-# plt.ylabel("Y")
-# plt.scatter(vis_x[:10000], vis_y[:10000], c = labels_test[:10000], cmap = plt.cm.get_cmap("jet", 10))
-# plt.colorbar(ticks = range(max(labels_test)))
-# plt.savefig(join(path_folder, "clusters_test.png"))
-# plt.close()
