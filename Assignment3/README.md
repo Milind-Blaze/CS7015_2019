@@ -9,7 +9,7 @@ This is a programming assignment in which feedforward neural networks of varying
 - [Validation data](https://drive.google.com/file/d/1eMGC-zMhVp9wI8V8xuXWP6DxMOUd3-5r/view?usp=sharing)     
 - [Test data](https://drive.google.com/file/d/1zFWbPvJ7dze5kICO6xtnd-ggORruY79G/view?usp=sharing)             
 - [My report](https://drive.google.com/file/d/1oNV1kge-6_L2fUnDqFHy_sgmUDDsPUi7/view?usp=sharing)     
-- [Best test predictions](https://drive.google.com/file/d/1MP-dqGZwUpDFY15z3uHlJgptmTD5mhDZ/view?usp=sharing) (95.457% accuracy)     
+- [Best test predictions](https://drive.google.com/file/d/1MP-dqGZwUpDFY15z3uHlJgptmTD5mhDZ/view?usp=sharing) (95.457% accuracy, baseline 95% accuracy)     
 
 ## Contents   
 
@@ -25,7 +25,7 @@ python train.py --lr <learning_rate> --momentum <gamma> --num_hidden <num_layers
 ```
 
 
-__lr__: learning rate to be used for all updates, defaults to 0.001      
+__learning_rate__: learning rate to be used for all updates, defaults to 0.001      
 __momentum__: momentum/gamma values for momentum based gradient descent, defaults to 0.5     
 __num_hidden__: number of hidden layers       
 __sizes__: comma separated values, number of units in each hidden layer      
@@ -35,14 +35,14 @@ __opt__: optimizer to be used for learning, defaults to "adam". Could be any one
 __batch_size__: size of minibatch, default is 20      
 __num_epochs__: number of epochs to run for, defaults to 10     
 __anneal__: a boolean argument. If set to "true", validation loss of the current epoch is compared with the previous epoch and if found to be greater than the latter, the epoch is 	restarted and any weight updates during the epoch are discareded.      
-__save_dir__: path to the folder where the final model is stored          
+__path_save_dir__: path to the folder where the final model is stored          
 __expt_dir__: path to the folder where the logs are stored     
-__train__: path to the training data .csv file    
-__val__: path to the validation dataset .csv file     
-__test__: path to the test dataset .csv file     
-__pretrain__: boolean variable, if set to "true", weigths from the epoch determined by state from a previous training session are loaded   
-__state__: epoch from which weights need to be loaded     
-__testing__: boolean variable, if set to "true", weights determined by "state" are loaded and predictiosn produced for the test data    
+__path_to_train__: path to the training data .csv file    
+__path_to_val__: path to the validation dataset .csv file     
+__path_to_test__: path to the test dataset .csv file     
+__to_pretrain__: boolean variable, if set to "true", weigths from the epoch determined by state from a previous training session are loaded   
+__epoch_to_restore__: epoch from which weights need to be loaded     
+__to_test__: boolean variable, if set to "true", weights determined by "state" are loaded and predictiosn produced for the test data    
 
 
 __Note__: Currently, no limit is imposed on the number of times annealing is performed. Therefore, it is quite possible that the algorithm keeps annealing the learning rate until it is a ridiculously low value.     
