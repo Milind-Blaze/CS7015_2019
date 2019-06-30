@@ -9,6 +9,7 @@ __Assignment1__: A theoretical assignment which serves as a refresher for Calcul
 __Assignment2__: A theoretical assignment which serves as a refresher for Linear Algebra.    
 __Assignment3__: A programming assignment to implement a feedforward neural network, backpropagation and gradient descent (and its variants) in NumPy without any deep learning frameworks.    
 __Assignment4__: A programming assignment to train CNNs for image classification.     
+__Assignment5__: A programming assignment to train a sequence to sequence model for transliteration.     
 __Assignment6__: A programming assignment to train RBMs and to study abstraction and generation using the same.
 __environment.yml__: A .yml file to setup the environment I used to run all the Python code. Most networks were trained in this environment on my GTX 1060 GPU. The tensorflow-gpu and Nvidia driver versions were chosen accordingly. Details of how to use this file are given below. 
 

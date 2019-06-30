@@ -8,7 +8,7 @@ This is a programming assignment in which convolutional neural networks are impl
 - [Train data](https://drive.google.com/file/d/1nvse-2dDZ1fmFU1LXridPU2W1CLqfC-a/view?usp=sharing)    
 - [Validation data](https://drive.google.com/file/d/1HSd6y7m8Fa4Zm0xD_0gPoZUOKNNZ1rRr/view?usp=sharing)     
 - [Test data](https://drive.google.com/file/d/1-06hjxnA6D88u5HJXYNCMF0lXQ3UBz0d/view?usp=sharing)             
-- [My report](https://drive.google.com/file/d/1oNV1kge-6_L2fUnDqFHy_sgmUDDsPUi7/view?usp=sharing)     
+- [My report](https://drive.google.com/file/d/12VBYQxmd_STX7FhN1paYxUVvz4v2UaJ3/view?usp=sharing)     
 - [Best test predictions](https://drive.google.com/file/d/11K86rBp1UPUN26DMeX_3SHqtO22NB5_T/view?usp=sharing) (55.506% accuracy, baseline of 50%)     
 
 ## Contents   
