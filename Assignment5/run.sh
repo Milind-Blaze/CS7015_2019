@@ -1,0 +1,1 @@
+python train.py --lr 0.0009 --batch_size 100 --init 1 --save_dir ./save_dir1/ --dropout_prob 0.55 --epochs 120 --train train.csv --val valid.csv --test test_final.csv

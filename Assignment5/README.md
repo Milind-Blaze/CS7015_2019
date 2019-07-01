@@ -15,7 +15,7 @@ This is a programming assignment in which sequence to sequence models based on L
 
 ### train.py
 
-This script contains code for implementation and training of different convolutional neural networks for classification. The network to be trained must be changed within the code. Adam optimizer is used to train the network with cross entropy as the loss function. Data augmentation uses simple tricks such as flipping the images vertically, horizontally and rotating hte images.
+This script contains code for implementation and training of a sequence to sequence model with a bidirectional LSTM encoder and a two layer decoder for the task of transliteration. Any changes to the architecture must be made by changing the code and no commandline arguements are supported. Adam optimizer is used to train the network with cross entropy as the loss function. 
 
 #### Usage    
 
