@@ -28,8 +28,8 @@ python train.py --lr <learning_rate>  --batch_size <batch_size> --init <init> --
 __learning_rate__: learning rate to be used for all updates, defaults to 0.001      
 __batch_size__: size of minibatch, defaults to 256      
 __init__: initialization, 1 corresponds to Xavier and 2 corresponds to He initialization, defaults to 1         
-__dropout_probab__: dropout probability, defaults to 0.8
-__path_save_dir__: path to the folder where the final model is stored           
+__dropout_probab__: dropout probability, defaults to 0.8      
+__path_save_dir__: path to the folder where the final model is stored                 
 __num_epochs__: number of epochs to run for, defaults to 10     
 __path_to_train__: path to the training data .csv file    
 __path_to_val__: path to the validation dataset .csv file     
@@ -39,7 +39,8 @@ __path_to_test__: path to the test dataset .csv file
 
 #### Outputs
 
-```__path_save_dir__```: contains details of the model trained as the output of the tensorflow saver     
+
+__```path_save_dir```__: contains details of the model trained as the output of the tensorflow saver     
 __./loss.pdf__: a plot of the learning curves for the RNN training    
 __./accuracy.pdf__: a plot of the variation of accuracy with number of epochs     
 
