@@ -21,16 +21,16 @@ This script contains code for implementation and training of a sequence to seque
 
 Run as 
 ```
-python train.py --lr <learning_rate>  --batch_size <batch_size> --init <init> --save_dir <path_save_dir> --epochs <num_epochs> --dataAugment <augmentation> --train <path_to_train> --val <path_to_val> --test <path_to_test>
+python train.py --lr <learning_rate>  --batch_size <batch_size> --init <init> --dropout_prob <dropout_probab> --save_dir <path_save_dir> --epochs <num_epochs>  --train <path_to_train> --val <path_to_val> --test <path_to_test>
 ```
 
 
 __learning_rate__: learning rate to be used for all updates, defaults to 0.001      
 __batch_size__: size of minibatch, defaults to 256      
 __init__: initialization, 1 corresponds to Xavier and 2 corresponds to He initialization, defaults to 1         
+__dropout_probab__: dropout probability, defaults to 0.8
 __path_save_dir__: path to the folder where the final model is stored           
 __num_epochs__: number of epochs to run for, defaults to 10     
-__augmentation__: set to 0 for no augmentation, 1 for augmentation   
 __path_to_train__: path to the training data .csv file    
 __path_to_val__: path to the validation dataset .csv file     
 __path_to_test__: path to the test dataset .csv file     
@@ -39,10 +39,10 @@ __path_to_test__: path to the test dataset .csv file
 
 #### Outputs
 
-__./output/__: Folder containing the graph and other details of the model saved using tensorflow summary writer     
-__./visualisation.pdf__: a plot of the 32 filters of the first layer      
-__./submission_2lay.csv__: a csv file containing the predictions for the test data    
-__./loss_vs_number_of_epochs.pdf__: a plot of the learning curves
+```__path_save_dir__```: contains details of the model trained as the output of the tensorflow saver     
+__./loss.pdf__: a plot of the learning curves for the RNN training    
+__./accuracy.pdf__: a plot of the variation of accuracy with number of epochs     
+
 
 __Note__: ```./``` indicates that the file is created in the working directory
 
