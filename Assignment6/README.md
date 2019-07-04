@@ -24,7 +24,7 @@ python train.py --n <n> --k <k> --eta <learning_rate> --num_epochs <num_epochs> 
 
 __n__: number of hidden units in the RBM, defaults to 100        
 __k__: number of steps of contrastive divergence to run per example, defaults to 1         
-__eta__: learning rate for contrastive divergence, defaults to 0.001         
+__learning_rate__: learning rate for contrastive divergence, defaults to 0.001         
 __num_epochs__: number of iterations over the entire training data to be performed during the training process, defaults to 1    
 __path_train__: path to training data, defaults to "./train.py"     
 __path_test__: path to the test data, defaults to "./test.py"     
