@@ -57,8 +57,8 @@ A shell file containing the best set of hyperparameters for the given task. Run 
 
 ## Useful links
 
-[Tensorflow NMT tutorial](https://github.com/tensorflow/nmt)      
-[Sequence to sequence models in tensoflow](https://towardsdatascience.com/seq2seq-model-in-tensorflow-ec0c557e560f)      
-[Suggested reference](https://github.com/tensorflow/tensorflow/blob/r1.13/tensorflow/contrib/legacy_seq2seq/python/ops/seq2seq.py)      
+- [Tensorflow NMT tutorial](https://github.com/tensorflow/nmt)      
+- [Sequence to sequence models in tensoflow](https://towardsdatascience.com/seq2seq-model-in-tensorflow-ec0c557e560f)      
+- [Suggested reference](https://github.com/tensorflow/tensorflow/blob/r1.13/tensorflow/contrib/legacy_seq2seq/python/ops/seq2seq.py)      
 
 
